@@ -33,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_right),
         onPressed: (){
-          Modular.to.pushNamed('/other/${homeController.name}');
+          Modular.to.pushNamed('/other');
         },
       ),
     );

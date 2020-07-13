@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular_example/app/views/home/home_controller.dart';
 
 class OtherView extends StatefulWidget {
-  final String name;
-
-  const OtherView({Key key, this.name}) : super(key: key);
-
   @override
   _OtherViewState createState() => _OtherViewState();
 }
 
 class _OtherViewState extends State<OtherView> {
+
+  final homeController = Modular.get<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,7 @@ class _OtherViewState extends State<OtherView> {
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(50),
-          child: Text('Hello ${widget.name}!'),
+          child: Text('Hello ${homeController.name}!'),
         )
       ),
     );
