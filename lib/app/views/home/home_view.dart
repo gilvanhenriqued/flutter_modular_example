@@ -22,6 +22,12 @@ class _HomeViewState extends State<HomeView> {
           ),
         )
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.arrow_right),
+        onPressed: (){
+          Navigator.pushNamed(context, '/other');
+        },
+      ),
     );
   }
 }
