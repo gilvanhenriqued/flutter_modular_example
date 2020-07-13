@@ -1,8 +1,27 @@
-import 'package:mobx/mobx.dart';
-part 'home_view.g.dart';
+import 'package:flutter/material.dart';
 
-class HomeController = _HomeControllerBase with _$HomeController;
+class HomeView extends StatefulWidget {
+  @override
+  _HomeViewState createState() => _HomeViewState();
+}
 
-abstract class _HomeControllerBase with Store {
-  
+class _HomeViewState extends State<HomeView> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+      ),
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(50),
+          child: TextField(
+            decoration: InputDecoration(
+              labelText: 'Digite o seu nome...'
+            ),
+          ),
+        )
+      ),
+    );
+  }
 }

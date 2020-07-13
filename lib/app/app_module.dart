@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_modular_example/app/app_controller.dart';
 import 'package:flutter_modular_example/app/app_widget.dart';
+import 'package:flutter_modular_example/app/views/home/home_controller.dart';
 import 'package:flutter_modular_example/app/views/home/home_view.dart';
 
 class AppModule extends MainModule {
@@ -13,10 +14,11 @@ class AppModule extends MainModule {
 
   @override
   List<Router> get routers => [
-    Router('/', child: (_, args) => Container())
+    Router('/', child: (_, args) => HomeView()),
+    Router('/home', child: (_, args) => HomeView()),
   ];
 
   @override
-  Widget get bootstrap => throw AppWidget();
+  Widget get bootstrap => AppWidget();
 
 }
