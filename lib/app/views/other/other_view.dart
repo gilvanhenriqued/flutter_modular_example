@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class OtherView extends StatefulWidget {
+  final String name;
+
+  const OtherView({Key key, this.name}) : super(key: key);
+
   @override
   _OtherViewState createState() => _OtherViewState();
 }
@@ -15,9 +19,7 @@ class _OtherViewState extends State<OtherView> {
       body: Container(
         child: Padding(
           padding: const EdgeInsets.all(50),
-          child: Text(
-            'Olá name!'
-          ),
+          child: Text('Hello ${widget.name}!'),
         )
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_modular_example/app/views/home/home_controller.dart';
 
 class HomeView extends StatefulWidget {
   @override
@@ -6,6 +8,9 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
+  final homeController = Modular.get<HomeController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +21,9 @@ class _HomeViewState extends State<HomeView> {
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: TextField(
+            onChanged: (value){
+              homeController.name = value;
+            },
             decoration: InputDecoration(
               labelText: 'Digite o seu nome...'
             ),
@@ -25,7 +33,7 @@ class _HomeViewState extends State<HomeView> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.arrow_right),
         onPressed: (){
-          Navigator.pushNamed(context, '/other');
+          Navigator.pushNamed(context, '/other/${homeController.name}');
         },
       ),
     );
