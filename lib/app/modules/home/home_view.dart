@@ -15,40 +15,43 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Lista de Pokemons'),
       ),
-      body: Column(
-        children: <Widget>[
-          Observer(
-            builder: (_) {
-              if(homeController.pokemons.error != null){
-                return Center(
-                  child: RaisedButton(
-                    onPressed: (){},
-                    child: Text('Press Again')
-                  )
-                );
-              }
+      body: Observer(
+        builder: (BuildContext context) {
 
-              if(homeController.pokemons.value == null){
-                return Center(
-                  child: CircularProgressIndicator()
-                );
-              }
+          var list = homeController.pokemons.value;
 
-              var list = homeController.pokemons.value;
+          if(homeController.pokemons.error != null){
+            return Center(
+              child: RaisedButton(
+                onPressed: (){},
+                child: Text('Press Again')
+              )
+            );
+          }
 
-              return ListView.builder(
-                itemCount: list.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
+          if(homeController.pokemons.value == null){
+            return Center(
+              child: CircularProgressIndicator()
+            );
+          }
+
+          return ListView.builder(
+            padding: EdgeInsets.all(8),
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Column(
+                children: <Widget>[
+                  ListTile(
                     title: Text(list[index].name),
-                  );
-                },
-              );
-            }
-          ),
-        ]
+                  ),
+                  Divider(),
+                ],
+              );          
+            },
+          );
+        }
       ),
     );
   }
